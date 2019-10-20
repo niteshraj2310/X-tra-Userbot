@@ -28,6 +28,7 @@ class Misc(loader.Module):
     async def install(self, event):
         reply = await event.get_reply_message()
         text = await event.reply("Processing...")
+        await event.delete()
         hmm = await event.client.download_media(reply, self.xconfig["directory"])
         path = Path(hmm)
         try:
@@ -35,6 +36,30 @@ class Misc(loader.Module):
         except Exception as e:
             await utils.answer(text, str(e), call="edit")
             return
+        await utils.answer(text, self.xconfig["installed message"][0], call="edit")
+
+    async def sqlinstall(self, event):
+        try:
+            sqlselect = event.text.split(" ")[1]
+            if sqlselect is not "ppe":
+                raise KeyError
+            elif sqlselect is not "uni":
+                raise KeyError
+        except KeyError:
+            await utils.answer(event, "Please choose a sql type, [uni or ppe]")
+            return
+        if sqlselect == "ppe":
+            directory = "xtrabot/compat/userbot/sql_helper"
+        elif sqlselect == "uni":
+            directory = "xtrabot/compat/uniborg/sql_helpers"
+        else:
+            await utils.answer(event, "Please choose a sql type, [uni or ppe]") # Two step verification
+            return
+        reply = await event.get_reply_message()
+        text = await event.reply("Processing...")
+        await event.delete()
+        hmm = await event.client.download_media(reply, directory)
+        path = Path(hmm)
         await utils.answer(text, self.xconfig["installed message"][0], call="edit")
 
 Module(Misc)
