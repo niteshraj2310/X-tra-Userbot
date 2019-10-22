@@ -16,6 +16,7 @@
 
 from xtrabot import loader, utils
 from xtrabot.xtrautil import Module
+import time
 from datetime import datetime
 
 class Util(loader.Module):
@@ -28,8 +29,16 @@ class Util(loader.Module):
         start = datetime.now()
         await utils.answer(event, self.xconfig["PING"][0])
         end = datetime.now()
+        if event.reply_to_msg_id:
+            info = await event.get_reply_message()
+        else:
+            info = event
+        DMY = time.strftime("%d.%m.%Y")
+        HM = time.strftime("%H:%M:%S")
+        TZ = time.strftime("%z")
         ms = (end - start).microseconds / 1000
-        await event.edit("Pong!\n{}ms".format(ms))
+        textmsg = "`ID = {}\nCHAT ID = {}\nDATE = {}\nTIME = {} GMT{}\nPING = {}ms`".format(info.id, info.chat_id, DMY, HM, TZ, ms)
+        await utils.answer(event, textmsg)
 
     async def help(self, event):
         await utils.answer(event, "No help yet.")
