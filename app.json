@@ -1,5 +1,5 @@
 {
-  "name": "X-tra Telegram",
+  "name": "X-tra-Userbot",
   "description": "Userbot created by a SNAPDRAGON",
   "logo": "https://telegra.ph/file/1be6c59f53fef57b5745b.jpg",
   "keywords": [
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Total-Noob-69/X-tra-Telegram",
+  "repository": "https://github.com/Total-Noob-69/X-tra-Userbot",
   "website": "https://t.me/s/X_tra_Telegram",
   "success_url": "https://t.me/X_tra_Telegram/5",
   "env": {
