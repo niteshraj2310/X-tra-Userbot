@@ -1,2 +1,5 @@
-# X-tra-Telegram-Upgraded
-Does not support the old X-tra plugins to conserve memory
+# Installing
+
+### The Only Way
+
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
