@@ -29,10 +29,7 @@ class Util(loader.Module):
         start = datetime.now()
         await utils.answer(event, self.xconfig["PING"][0])
         end = datetime.now()
-        if event.reply_to_msg_id:
-            info = await event.get_reply_message()
-        else:
-            info = event
+        info = await event.get_reply_message() if event.reply_to_msg_id else event
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
         TZ = time.strftime("%z")
